@@ -29,6 +29,7 @@ end
 --[[
     Expects a paddle as an argument and returns true or false, depending
     on whether their rectangles overlap.
+    (AABB Collision Detiction)
 ]]
 function Ball:collides(paddle)
     -- first, check to see if the left edge of either is farther to the right
