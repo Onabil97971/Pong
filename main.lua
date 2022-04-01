@@ -123,7 +123,7 @@ function love.update(dt)
             end
         end
         if ball:collides(player2) then
-            ball.dx = -ball.dx * 1.03
+            ball.dx = -ball.dx * 1.2
             ball.x = player2.x - 4
 
             -- keep velocity going in the same direction, but randomize it
@@ -164,6 +164,21 @@ function love.update(dt)
     else
         player2.dy = 0
     end
+
+    if ball.x < 0 then 
+        servingPlayer = 1
+        player2Score = player2Score + 1
+        ball:reset()
+        gameState = 'start'
+    end
+
+    if ball.x > VIRTUAL_WIDTH then
+        servingPlayer = 2
+        player1Score = player1Score + 1
+        ball:reset()
+        gameState('start')
+    end
+
 
     -- update our ball based on its DX and DY only if we're in play state;
     -- scale the velocity by dt so movement is framerate-independent
